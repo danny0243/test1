@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 927 158" role="img" aria-labelledby="title desc">
+  <title id="title">國立勤益科技大學圖書館</title>
+  <desc id="desc">National CHIN-YI University of Technology Library logo</desc>
+  <rect width="927" height="158" fill="#fff"/>
+  <g transform="translate(43 37)" fill="none" stroke="#007a3d" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 2c14 10 27 14 44 14S79 12 92 2v82c-12-6-27-8-44-8S16 78 4 84Z"/>
+    <path d="M48 16v60"/>
+    <circle cx="48" cy="51" r="23" fill="#fff"/>
+    <circle cx="48" cy="51" r="12" fill="#007a3d" stroke="none"/>
+  </g>
+  <text x="158" y="81" fill="#686868" font-size="44" font-weight="800" letter-spacing="4"
+    font-family="'Noto Sans TC','Microsoft JhengHei','PingFang TC','Heiti TC',sans-serif">國立勤益科技大學 圖書館</text>
+  <text x="158" y="121" fill="#111" font-size="31" font-weight="800" letter-spacing="0"
+    font-family="'Times New Roman','Noto Serif',serif">National CHIN-YI University of Technology Library</text>
+</svg>

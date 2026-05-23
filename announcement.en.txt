@@ -1,0 +1,43 @@
+# National Chin-Yi University of Technology Library Public AI Account Privacy Notice
+
+## Purpose
+In support of the Ministry of Education's policy direction for introducing mainstream generative AI tools into libraries and university campuses, and to deepen AI literacy education for NCUT faculty, staff, and students, the Library plans to provide an on-campus learning environment for AI tools such as ChatGPT, Claude, Gemini, and other mainstream services. Because these services may involve shared accounts, shared devices, and residual conversation history, the Library will ask the Computer Center to assist with browser extensions and post-use cleanup workflows to reduce the risk of exposing personal data, research materials, and campus information.
+
+## Scope
+- This notice applies to NCUT faculty, staff, and students who use public AI tool accounts in the Library or other designated campus locations.
+- Covered services include, but are not limited to, ChatGPT, Claude, Gemini, and other mainstream generative AI tools added later.
+- This notice covers public account sign-in, temporary or incognito conversation modes, conversation history deletion, local browsing data cleanup, and user privacy reminders.
+
+## Information Security and Privacy Principles
+- Minimum disclosure: Do not enter names, student or employee IDs, national ID numbers, contact information, account passwords, health information, financial information, or any other data that may directly or indirectly identify a person.
+- Purpose limitation: AI tools are provided only for learning, research assistance, and general knowledge exploration. They may not be used as the sole basis for administrative decisions, personal data processing, grading, or official documents that have not been reviewed.
+- Confidentiality protection: Do not upload unpublished campus information, committee materials, procurement information, research collaboration materials, unpublished papers, or documents subject to licensing restrictions.
+- Independent verification: Generative AI responses may contain errors, bias, or outdated information. Users should verify sources independently and comply with academic ethics and copyright rules.
+- Shared accounts are not anonymous: Even when using a public account, external AI service providers may process submitted content according to their terms of service. De-identify content and avoid providing sensitive information before use.
+
+## Measures Planned by the Library and Computer Center
+- Install browser extensions on public computers to automatically guide users toward ChatGPT Temporary Chat, Claude Incognito Chat, or equivalent privacy modes.
+- If a non-temporary or non-incognito conversation mode is detected, the extension will remind the user and restrict input to prevent conversations from being written into public account history.
+- After use, run cleanup workflows for conversation history, browsing history, cache, cookies, or local temporary data to reduce the possibility that the next user can access previous records.
+- Public accounts will be centrally managed by the responsible unit and may not be shared externally, leaked, or privately modified.
+- If account anomalies, suspected personal data leakage, or information security incidents are discovered, notify the Library and Computer Center immediately.
+
+## User Responsibilities
+- Before use, confirm that the screen is in Temporary Chat, Incognito Chat, or another safe mode announced by the Library.
+- Remove names, student or employee IDs, phone numbers, email addresses, photos, signatures, medical records, financial information, research participant data, and any other identifiable information from files before upload.
+- Do not ask AI to generate illegal content, infringe others' rights, spread false information, crack systems, steal credentials, or bypass campus information security controls.
+- After use, close the conversation window and follow on-site instructions to sign out or complete the cleanup process.
+- If teaching or research work truly requires processing personal or sensitive data, use an approved campus system or project workflow instead of entering the data into a public AI account.
+
+## Legal and Policy References
+- The Cyber Security Management Act requires government agencies and specific non-government agencies to implement information security measures from management, technical, awareness, and training perspectives according to business importance, sensitivity, and system characteristics.
+- The Personal Data Protection Act requires that the collection, processing, and use of personal data not exceed the necessary scope of specific purposes, and that security measures be adopted to prevent theft, alteration, damage, loss, or leakage.
+- The Executive Yuan's Guidelines for the Use of Generative AI by Agencies and Subordinate Agencies set out principles of security, privacy, data governance, and accountability, and remind users not to disclose unpublished official information or personal privacy information to generative AI.
+
+## Contact
+Library reader services: please refer to the service desk or campus announcements for contact information.
+Computer Center information security contact: report immediately if an account is abnormal, records are not cleared, or personal data leakage is suspected.
+
+## Version
+Date: 2026-05-16
+This notice will be updated as Ministry of Education policies, AI service terms, campus information security rules, and related laws evolve.

@@ -1,0 +1,965 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="國立勤益科技大學圖書館 AI 工具公用帳號隱私維護公告" />
+    <meta name="theme-color" content="#007a3d" />
+    <meta name="application-name" content="NCUT Library AI Notice" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="NCUT Library" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+    <title>AI 工具公用帳號隱私維護公告｜國立勤益科技大學圖書館</title>
+    <style>
+      :root {
+        --background: 0 0% 100%;
+        --foreground: 0 0% 7%;
+        --card: 0 0% 100%;
+        --card-foreground: 0 0% 7%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 0 0% 7%;
+        --primary: 150 100% 24%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 150 24% 95%;
+        --secondary-foreground: 150 100% 18%;
+        --muted: 0 0% 96%;
+        --muted-foreground: 0 0% 41%;
+        --accent: 150 38% 93%;
+        --accent-foreground: 150 100% 20%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 150 17% 86%;
+        --input: 150 17% 86%;
+        --ring: 150 100% 24%;
+        --radius: 8px;
+        --ncut-green: 150 100% 24%;
+        --ncut-green-dark: 150 100% 16%;
+        --ncut-gray: 0 0% 41%;
+        --ncut-ink: 0 0% 7%;
+        --surface: 150 24% 98%;
+        --surface-strong: 150 26% 94%;
+        color-scheme: light;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        background: hsl(var(--background));
+        color: hsl(var(--foreground));
+        font-family:
+          "Noto Sans TC",
+          "Microsoft JhengHei",
+          "PingFang TC",
+          "Heiti TC",
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        line-height: 1.65;
+      }
+
+      ::selection {
+        background: hsl(var(--ncut-green) / 0.18);
+        color: hsl(var(--ncut-ink));
+      }
+
+      a {
+        color: hsl(var(--ncut-green));
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: hsl(var(--ncut-green-dark));
+        text-decoration: underline;
+      }
+
+      .page-shell {
+        min-height: 100vh;
+        background:
+          linear-gradient(180deg, hsl(var(--surface-strong)) 0, hsl(var(--surface)) 260px, hsl(var(--background)) 520px),
+          hsl(var(--background));
+      }
+
+      .container {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .site-header {
+        border-bottom: 3px solid hsl(var(--ncut-green));
+        background: hsl(var(--background) / 0.94);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 12px 28px hsl(var(--ncut-green) / 0.08);
+        position: sticky;
+        top: 0;
+        z-index: 20;
+      }
+
+      .header-inner {
+        min-height: 122px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        min-width: 0;
+        gap: 14px;
+      }
+
+      .brand-logo {
+        width: 700px;
+        max-width: min(64vw, 700px);
+        height: auto;
+        display: block;
+        border-radius: 0;
+        filter: drop-shadow(0 8px 18px hsl(var(--ncut-green) / 0.08));
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .badge,
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        min-height: 36px;
+        border-radius: var(--radius);
+        border: 1px solid hsl(var(--border));
+        padding: 0 12px;
+        font-size: 14px;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      .badge {
+        background: hsl(var(--accent));
+        border-color: hsl(var(--ncut-green) / 0.16);
+        color: hsl(var(--accent-foreground));
+      }
+
+      .button {
+        background: hsl(var(--primary));
+        color: hsl(var(--primary-foreground));
+        box-shadow: 0 1px 2px hsl(var(--ncut-green) / 0.16);
+        transition:
+          background-color 160ms ease,
+          border-color 160ms ease,
+          color 160ms ease,
+          box-shadow 160ms ease;
+      }
+
+      .button.secondary {
+        background: hsl(var(--background));
+        border-color: hsl(var(--ncut-green) / 0.28);
+        color: hsl(var(--secondary-foreground));
+      }
+
+      .button:hover {
+        background: hsl(var(--ncut-green-dark));
+        color: hsl(var(--primary-foreground));
+        text-decoration: none;
+      }
+
+      .button.secondary:hover {
+        background: hsl(var(--accent));
+        border-color: hsl(var(--ncut-green) / 0.42);
+        color: hsl(var(--ncut-green-dark));
+      }
+
+      .lang-toggle {
+        min-width: 92px;
+      }
+
+      .hero {
+        padding: 52px 0 30px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.55fr) minmax(280px, 0.95fr);
+        gap: 24px;
+        align-items: stretch;
+      }
+
+      .hero-copy {
+        padding: 8px 0;
+      }
+
+      h1,
+      h2,
+      h3 {
+        line-height: 1.22;
+        letter-spacing: 0;
+        color: hsl(var(--ncut-ink));
+      }
+
+      h1 {
+        max-width: 820px;
+        margin: 14px 0 14px;
+        color: hsl(var(--ncut-green-dark));
+        font-size: clamp(34px, 6vw, 60px);
+      }
+
+      h2 {
+        margin: 0 0 14px;
+        font-size: 24px;
+      }
+
+      h3 {
+        margin: 0 0 8px;
+        font-size: 17px;
+      }
+
+      .lead {
+        max-width: 780px;
+        margin: 0;
+        color: hsl(var(--ncut-gray));
+        font-size: 18px;
+      }
+
+      .hero-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 24px;
+      }
+
+      .panel,
+      .card {
+        border: 1px solid hsl(var(--border));
+        background: hsl(var(--card));
+        color: hsl(var(--card-foreground));
+        border-radius: var(--radius);
+        box-shadow:
+          0 1px 2px hsl(var(--ncut-green) / 0.06),
+          0 18px 36px hsl(var(--ncut-green) / 0.08);
+      }
+
+      .alert-panel {
+        border-color: hsl(var(--ncut-green) / 0.22);
+        background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--accent)) 100%);
+        padding: 22px;
+      }
+
+      .alert-panel .title-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+
+      .icon-box {
+        width: 42px;
+        height: 42px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: var(--radius);
+        background: hsl(var(--ncut-green));
+        color: hsl(var(--primary-foreground));
+        box-shadow: 0 8px 18px hsl(var(--ncut-green) / 0.18);
+      }
+
+      .alert-panel p {
+        margin: 0;
+        color: hsl(var(--muted-foreground));
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .stat {
+        padding: 12px;
+        background: hsl(var(--background) / 0.86);
+        border: 1px solid hsl(var(--ncut-green) / 0.12);
+        border-radius: var(--radius);
+        min-width: 0;
+      }
+
+      .stat strong {
+        display: block;
+        color: hsl(var(--ncut-green));
+        font-size: 20px;
+        line-height: 1.1;
+      }
+
+      .stat span {
+        display: block;
+        color: hsl(var(--muted-foreground));
+        font-size: 12px;
+        margin-top: 4px;
+      }
+
+      .announcement-stack {
+        display: grid;
+        gap: 18px;
+        padding-bottom: 44px;
+      }
+
+      .announcement {
+        padding: 28px;
+      }
+
+      .announcement-header {
+        border-bottom: 1px solid hsl(var(--ncut-green) / 0.18);
+        padding-bottom: 18px;
+        margin-bottom: 22px;
+      }
+
+      #announcement-content h1 {
+        color: hsl(var(--ncut-green-dark));
+        font-size: 30px;
+        margin: 0 0 18px;
+      }
+
+      #announcement-content h2 {
+        margin-top: 30px;
+        padding-top: 22px;
+        border-top: 1px solid hsl(var(--ncut-green) / 0.18);
+        color: hsl(var(--ncut-green-dark));
+        font-size: 22px;
+      }
+
+      #announcement-content h2:first-child {
+        margin-top: 0;
+        border-top: 0;
+        padding-top: 0;
+      }
+
+      #announcement-content p {
+        margin: 0 0 14px;
+        color: hsl(var(--foreground));
+      }
+
+      #announcement-content .notice-line {
+        margin-bottom: 12px;
+      }
+
+      #announcement-content .notice-term {
+        color: hsl(var(--ncut-green-dark));
+        font-weight: 800;
+      }
+
+      #announcement-content ul {
+        margin: 0 0 16px 1.2em;
+        padding: 0;
+      }
+
+      #announcement-content li {
+        margin-bottom: 8px;
+      }
+
+      .tabs-panel {
+        padding: 22px;
+      }
+
+      .tabs-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 4px;
+        margin-bottom: 18px;
+        border-radius: var(--radius);
+        border: 1px solid hsl(var(--ncut-green) / 0.12);
+        background: hsl(var(--ncut-green) / 0.08);
+      }
+
+      .tab-trigger {
+        min-height: 38px;
+        border: 0;
+        border-radius: calc(var(--radius) - 2px);
+        background: transparent;
+        color: hsl(var(--muted-foreground));
+        padding: 0 14px;
+        font: inherit;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .tab-trigger[aria-selected="true"] {
+        background: hsl(var(--ncut-green));
+        color: hsl(var(--primary-foreground));
+        box-shadow: 0 8px 18px hsl(var(--ncut-green) / 0.18);
+      }
+
+      .tab-content[hidden] {
+        display: none;
+      }
+
+      .tab-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .tab-card {
+        padding: 16px;
+        min-height: 118px;
+        border: 1px solid hsl(var(--ncut-green) / 0.14);
+        border-radius: var(--radius);
+        background: hsl(var(--surface));
+      }
+
+      .tab-card h3 {
+        color: hsl(var(--ncut-green-dark));
+      }
+
+      .tab-card p {
+        margin: 8px 0 0;
+        color: hsl(var(--muted-foreground));
+        font-size: 14px;
+      }
+
+      .checklist {
+        display: grid;
+        gap: 12px;
+        margin: 14px 0 0;
+      }
+
+      .check-item {
+        display: grid;
+        grid-template-columns: 24px 1fr;
+        gap: 10px;
+        align-items: start;
+        color: hsl(var(--muted-foreground));
+        font-size: 14px;
+      }
+
+      .check-icon {
+        width: 22px;
+        height: 22px;
+        border-radius: 999px;
+        background: hsl(var(--ncut-green));
+        color: hsl(var(--primary-foreground));
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+        line-height: 1;
+      }
+
+      .source-list {
+        display: grid;
+        gap: 10px;
+        margin: 12px 0 0;
+        padding: 0;
+        list-style: none;
+        font-size: 14px;
+      }
+
+      .source-list a {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .muted {
+        color: hsl(var(--muted-foreground));
+      }
+
+      .site-footer {
+        border-top: 1px solid hsl(var(--border));
+        background: hsl(var(--surface));
+        padding: 26px 0;
+        color: hsl(var(--muted-foreground));
+        font-size: 14px;
+      }
+
+      .footer-inner {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      @media (max-width: 920px) {
+        .hero-grid,
+        .tab-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 700px) {
+        .container {
+          width: min(100% - 24px, 1120px);
+        }
+
+        .header-inner {
+          align-items: flex-start;
+          flex-direction: column;
+          padding: 12px 0;
+        }
+
+        .header-actions {
+          justify-content: flex-start;
+          width: 100%;
+        }
+
+        .brand-logo {
+          max-width: 100%;
+          width: 520px;
+        }
+
+        .hero {
+          padding-top: 32px;
+        }
+
+        .stats {
+          grid-template-columns: 1fr;
+        }
+
+        .announcement {
+          padding: 20px;
+        }
+
+        .tabs-list {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .button,
+        .badge {
+          min-height: 34px;
+          font-size: 13px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="container header-inner">
+          <a class="brand" href="#top" aria-label="回到頁首" data-i18n-aria="backTop">
+            <img class="brand-logo" src="assets/ncut-logo.svg" alt="國立勤益科技大學圖書館" data-i18n-alt="logoAlt" />
+          </a>
+          <nav class="header-actions" aria-label="公告導覽" data-i18n-aria="noticeNav">
+            <a class="button secondary" href="#announcement" data-i18n="navAnnouncement">公告內容</a>
+            <a class="button secondary" href="#info-tabs" data-i18n="navInfo">相關資訊</a>
+            <button class="button secondary lang-toggle" type="button" data-lang-toggle data-i18n="langToggle">English</button>
+            <span class="badge" data-i18n="versionBadge">公告版 2026.05.16</span>
+          </nav>
+        </div>
+      </header>
+
+      <main id="top">
+        <section class="hero">
+          <div class="container hero-grid">
+            <div class="hero-copy">
+              <h1 data-i18n="heroTitle">AI 工具公用帳號隱私維護公告</h1>
+              <p class="lead" data-i18n="heroLead">
+                配合教育部推動圖書館與大學校園導入主流 AI 工具，本館建立公用帳號使用規範與對話紀錄清除機制，協助師生在學習與研究中兼顧 AI 素養、資通安全與個人資料保護。
+              </p>
+              <div class="hero-meta" aria-label="公告摘要" data-i18n-aria="noticeSummary">
+                <span class="badge">ChatGPT</span>
+                <span class="badge">Claude</span>
+                <span class="badge">Gemini</span>
+                <span class="badge">Temporary / Incognito Chat</span>
+              </div>
+            </div>
+
+            <aside class="panel alert-panel" aria-label="重要提醒" data-i18n-aria="importantReminder">
+              <div class="title-row">
+                <div>
+                  <h2 data-i18n="reminderTitle">使用前提醒</h2>
+                  <p data-i18n="reminderText">公用帳號不代表匿名。輸入任何資料前，請先去識別化並確認目前為臨時或無痕對話模式。</p>
+                </div>
+                <div class="icon-box" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" stroke="currentColor" stroke-width="2"/>
+                    <path d="m9 12 2 2 4-5" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="stats">
+                <div class="stat">
+                  <strong>1</strong>
+                  <span data-i18n="statOne">先確認隱私模式</span>
+                </div>
+                <div class="stat">
+                  <strong>2</strong>
+                  <span data-i18n="statTwo">避免輸入個資</span>
+                </div>
+                <div class="stat">
+                  <strong>3</strong>
+                  <span data-i18n="statThree">使用後完成清除</span>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section id="announcement" class="container announcement-stack">
+          <article class="panel announcement">
+            <div class="announcement-header">
+              <h2 data-i18n="announcementFull">公告全文</h2>
+            </div>
+            <div id="announcement-content" aria-live="polite">
+              <p class="muted" data-i18n="loadingNotice">正在讀取公告內容...</p>
+            </div>
+          </article>
+
+          <section id="info-tabs" class="panel tabs-panel" aria-label="相關資訊分頁" data-i18n-aria="infoTabs">
+            <div class="tabs-list" role="tablist" aria-label="相關資訊" data-i18n-aria="relatedInfo">
+              <button class="tab-trigger" id="tab-policy" role="tab" type="button" aria-selected="true" aria-controls="panel-policy" data-tab="policy" data-i18n="tabPolicy">政策重點</button>
+              <button class="tab-trigger" id="tab-check" role="tab" type="button" aria-selected="false" aria-controls="panel-check" data-tab="check" data-i18n="tabCheck">使用前確認</button>
+              <button class="tab-trigger" id="tab-sources" role="tab" type="button" aria-selected="false" aria-controls="panel-sources" data-tab="sources" data-i18n="tabSources">法規依據</button>
+              <button class="tab-trigger" id="tab-contact" role="tab" type="button" aria-selected="false" aria-controls="panel-contact" data-tab="contact" data-i18n="tabContact">聯絡窗口</button>
+            </div>
+
+            <div class="tab-content" id="panel-policy" role="tabpanel" aria-labelledby="tab-policy">
+              <div class="tab-grid" aria-label="政策重點" data-i18n-aria="tabPolicy">
+                <article class="tab-card">
+                  <h3 data-i18n="policyOneTitle">AI 平權與素養</h3>
+                  <p data-i18n="policyOneText">提供校內 AI 工具學習環境，協助師生接觸主流生成式 AI。</p>
+                </article>
+                <article class="tab-card">
+                  <h3 data-i18n="policyTwoTitle">公用帳號治理</h3>
+                  <p data-i18n="policyTwoText">降低共用設備、共用帳號與歷史紀錄殘留造成的隱私風險。</p>
+                </article>
+                <article class="tab-card">
+                  <h3 data-i18n="policyThreeTitle">資通安全防護</h3>
+                  <p data-i18n="policyThreeText">以管理、技術、認知與訓練並行的方式維護使用環境。</p>
+                </article>
+                <article class="tab-card">
+                  <h3 data-i18n="policyFourTitle">個資最小化</h3>
+                  <p data-i18n="policyFourText">不輸入、不上傳、不保留可識別個人或未公開校務資料。</p>
+                </article>
+              </div>
+            </div>
+
+            <div class="tab-content" id="panel-check" role="tabpanel" aria-labelledby="tab-check" hidden>
+              <h2 data-i18n="tabCheck">使用前確認</h2>
+              <div class="checklist">
+                <div class="check-item"><span class="check-icon">✓</span><span data-i18n="checkOne">已進入 Temporary Chat、Incognito Chat 或本館指定安全模式。</span></div>
+                <div class="check-item"><span class="check-icon">✓</span><span data-i18n="checkTwo">已移除姓名、學號、聯絡方式與可識別個人的內容。</span></div>
+                <div class="check-item"><span class="check-icon">✓</span><span data-i18n="checkThree">未上傳未公開校務資料、研究機密或受授權限制文件。</span></div>
+                <div class="check-item"><span class="check-icon">✓</span><span data-i18n="checkFour">使用後依現場指示完成登出與清除流程。</span></div>
+              </div>
+            </div>
+
+            <div class="tab-content" id="panel-sources" role="tabpanel" aria-labelledby="tab-sources" hidden>
+              <h2 data-i18n="sourcesTitle">法規與政策依據</h2>
+              <ul class="source-list">
+                <li><a href="https://law.moda.gov.tw/LawContent.aspx?id=FL088622" target="_blank" rel="noopener" data-i18n="sourceCyber">資通安全管理法</a></li>
+                <li><a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=I0050021" target="_blank" rel="noopener" data-i18n="sourcePersonal">個人資料保護法</a></li>
+                <li><a href="https://www.ey.gov.tw/Page/448DE008087A1971/40c1a925-121d-4b6b-8f40-7e9e1a5401f2" target="_blank" rel="noopener" data-i18n="sourceAi">行政院生成式 AI 參考指引</a></li>
+              </ul>
+            </div>
+
+            <div class="tab-content" id="panel-contact" role="tabpanel" aria-labelledby="tab-contact" hidden>
+              <h2 data-i18n="tabContact">聯絡窗口</h2>
+              <p class="muted" data-i18n="contactText">圖書館讀者服務窗口與電算中心資安窗口可依校內公告補上分機、Email 或通報表單。</p>
+            </div>
+          </section>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="container footer-inner">
+          <span data-i18n="footerText">Copyright ©2026 國立勤益科技大學圖書館｜AI 工具公用帳號隱私維護公告</span>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      const announcementFiles = {
+        zh: "announcement.txt",
+        en: "announcement.en.txt"
+      };
+
+      const fallbackText = {
+        zh: `# 國立勤益科技大學圖書館 AI 工具公用帳號隱私維護公告
+
+## 公告主旨
+為配合教育部推動圖書館與大學校園導入主流生成式 AI 工具之政策方向，並深化本校師生 AI 素養教育，本館將建立公用帳號使用規範與對話紀錄清除機制，降低共用帳號隱私風險。
+
+## 使用提醒
+- 公用帳號不等於匿名，請勿輸入個人資料或未公開校務資料。
+- 使用前請確認已進入臨時對話或無痕對話模式。
+- 使用後請依現場指示完成登出與清除流程。`,
+        en: `# National Chin-Yi University of Technology Library Public AI Account Privacy Notice
+
+## Purpose
+The Library provides public AI tool accounts for learning and research support while reducing shared-account privacy risks through temporary or incognito conversation modes and cleanup workflows.
+
+## Reminders
+- A shared account is not anonymous. Do not enter personal data or unpublished campus information.
+- Before use, confirm that Temporary Chat, Incognito Chat, or an equivalent privacy mode is enabled.
+- After use, follow on-site instructions to sign out or complete the cleanup process.`
+      };
+
+      const i18n = {
+        zh: {
+          pageTitle: "AI 工具公用帳號隱私維護公告｜國立勤益科技大學圖書館",
+          logoAlt: "國立勤益科技大學圖書館",
+          backTop: "回到頁首",
+          noticeNav: "公告導覽",
+          navAnnouncement: "公告內容",
+          navInfo: "相關資訊",
+          langToggle: "English",
+          versionBadge: "公告版 2026.05.16",
+          heroTitle: "AI 工具公用帳號隱私維護公告",
+          heroLead: "配合教育部推動圖書館與大學校園導入主流 AI 工具，本館建立公用帳號使用規範與對話紀錄清除機制，協助師生在學習與研究中兼顧 AI 素養、資通安全與個人資料保護。",
+          noticeSummary: "公告摘要",
+          importantReminder: "重要提醒",
+          reminderTitle: "使用前提醒",
+          reminderText: "公用帳號不代表匿名。輸入任何資料前，請先去識別化並確認目前為臨時或無痕對話模式。",
+          statOne: "先確認隱私模式",
+          statTwo: "避免輸入個資",
+          statThree: "使用後完成清除",
+          announcementFull: "公告全文",
+          loadingNotice: "正在讀取公告內容...",
+          infoTabs: "相關資訊分頁",
+          relatedInfo: "相關資訊",
+          tabPolicy: "政策重點",
+          tabCheck: "使用前確認",
+          tabSources: "法規依據",
+          tabContact: "聯絡窗口",
+          policyOneTitle: "AI 平權與素養",
+          policyOneText: "提供校內 AI 工具學習環境，協助師生接觸主流生成式 AI。",
+          policyTwoTitle: "公用帳號治理",
+          policyTwoText: "降低共用設備、共用帳號與歷史紀錄殘留造成的隱私風險。",
+          policyThreeTitle: "資通安全防護",
+          policyThreeText: "以管理、技術、認知與訓練並行的方式維護使用環境。",
+          policyFourTitle: "個資最小化",
+          policyFourText: "不輸入、不上傳、不保留可識別個人或未公開校務資料。",
+          checkOne: "已進入 Temporary Chat、Incognito Chat 或本館指定安全模式。",
+          checkTwo: "已移除姓名、學號、聯絡方式與可識別個人的內容。",
+          checkThree: "未上傳未公開校務資料、研究機密或受授權限制文件。",
+          checkFour: "使用後依現場指示完成登出與清除流程。",
+          sourcesTitle: "法規與政策依據",
+          sourceCyber: "資通安全管理法",
+          sourcePersonal: "個人資料保護法",
+          sourceAi: "行政院生成式 AI 參考指引",
+          contactText: "圖書館讀者服務窗口與電算中心資安窗口可依校內公告補上分機、Email 或通報表單。",
+          footerText: "Copyright ©2026 國立勤益科技大學圖書館｜AI 工具公用帳號隱私維護公告",
+          loadError: "未能直接讀取公告內容，已顯示內建備援公告。"
+        },
+        en: {
+          pageTitle: "Public AI Account Privacy Notice | NCUT Library",
+          logoAlt: "National Chin-Yi University of Technology Library",
+          backTop: "Back to top",
+          noticeNav: "Notice navigation",
+          navAnnouncement: "Notice",
+          navInfo: "Information",
+          langToggle: "中文",
+          versionBadge: "Version 2026.05.16",
+          heroTitle: "Public AI Account Privacy Notice",
+          heroLead: "In support of the Ministry of Education's AI initiatives for libraries and university campuses, the Library is establishing shared-account rules and cleanup workflows so faculty, staff, and students can use AI tools while protecting AI literacy, information security, and personal data privacy.",
+          noticeSummary: "Notice summary",
+          importantReminder: "Important Reminder",
+          reminderTitle: "Before Use",
+          reminderText: "A public account is not anonymous. Before entering any information, de-identify it and confirm that the current conversation is temporary or incognito.",
+          statOne: "Confirm privacy mode",
+          statTwo: "Avoid personal data",
+          statThree: "Clear after use",
+          announcementFull: "Full Notice",
+          loadingNotice: "Loading notice...",
+          infoTabs: "Related information tabs",
+          relatedInfo: "Related information",
+          tabPolicy: "Policy Focus",
+          tabCheck: "Before Use",
+          tabSources: "References",
+          tabContact: "Contact",
+          policyOneTitle: "AI Access and Literacy",
+          policyOneText: "Provide an on-campus AI learning environment for mainstream generative AI tools.",
+          policyTwoTitle: "Shared Account Governance",
+          policyTwoText: "Reduce privacy risks from shared devices, shared accounts, and residual history.",
+          policyThreeTitle: "Information Security",
+          policyThreeText: "Maintain the usage environment through management, technical measures, awareness, and training.",
+          policyFourTitle: "Data Minimization",
+          policyFourText: "Do not enter, upload, or retain identifiable personal data or unpublished campus information.",
+          checkOne: "Temporary Chat, Incognito Chat, or the Library's designated safe mode is enabled.",
+          checkTwo: "Names, IDs, contact details, and identifiable content have been removed.",
+          checkThree: "Unpublished campus information, research secrets, or restricted documents are not uploaded.",
+          checkFour: "After use, follow on-site instructions to sign out and complete cleanup.",
+          sourcesTitle: "Legal and Policy References",
+          sourceCyber: "Cyber Security Management Act",
+          sourcePersonal: "Personal Data Protection Act",
+          sourceAi: "Executive Yuan Generative AI Guidelines",
+          contactText: "Library reader services and Computer Center security contacts may be added according to campus announcements.",
+          footerText: "Copyright ©2026 National Chin-Yi University of Technology Library | Public AI Account Privacy Notice",
+          loadError: "Unable to read the notice content directly. Built-in fallback content is shown."
+        }
+      };
+
+      const escapeHtml = (value) =>
+        value
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+
+      function renderAnnouncement(markdownText) {
+        const lines = markdownText.replace(/\r\n/g, "\n").split("\n");
+        const html = [];
+
+        for (const rawLine of lines) {
+          const line = rawLine.trim();
+          if (!line) {
+            continue;
+          }
+
+          if (line.startsWith("# ")) {
+            html.push(`<h1>${escapeHtml(line.slice(2))}</h1>`);
+            continue;
+          }
+
+          if (line.startsWith("## ")) {
+            html.push(`<h2>${escapeHtml(line.slice(3))}</h2>`);
+            continue;
+          }
+
+          if (line.startsWith("- ")) {
+            html.push(renderNoticeLine(line.slice(2)));
+            continue;
+          }
+
+          html.push(`<p>${escapeHtml(line)}</p>`);
+        }
+
+        return html.join("");
+      }
+
+      function renderNoticeLine(text) {
+        const escaped = escapeHtml(text);
+        const zhSeparator = escaped.indexOf("：");
+        const enSeparator = escaped.indexOf(":");
+        const separator = zhSeparator >= 0 ? zhSeparator : enSeparator;
+
+        if (separator > 0 && separator <= 42) {
+          const term = escaped.slice(0, separator + 1);
+          const body = escaped.slice(separator + 1).trimStart();
+          return `<p class="notice-line"><span class="notice-term">${term}</span>${body}</p>`;
+        }
+
+        return `<p class="notice-line">${escaped}</p>`;
+      }
+
+      async function loadAnnouncement(lang) {
+        const target = document.querySelector("#announcement-content");
+        target.innerHTML = `<p class="muted">${escapeHtml(i18n[lang].loadingNotice)}</p>`;
+
+        try {
+          const response = await fetch(announcementFiles[lang], { cache: "no-store" });
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          const text = await response.text();
+          target.innerHTML = renderAnnouncement(text);
+        } catch (error) {
+          target.innerHTML = renderAnnouncement(fallbackText[lang]);
+          const note = document.createElement("p");
+          note.className = "muted";
+          note.textContent = i18n[lang].loadError;
+          target.appendChild(note);
+        }
+      }
+
+      function applyStaticTranslations(lang) {
+        const dict = i18n[lang];
+
+        document.documentElement.lang = lang === "zh" ? "zh-Hant" : "en";
+        document.title = dict.pageTitle;
+
+        for (const el of document.querySelectorAll("[data-i18n]")) {
+          el.textContent = dict[el.dataset.i18n] || "";
+        }
+
+        for (const el of document.querySelectorAll("[data-i18n-html]")) {
+          el.innerHTML = dict[el.dataset.i18nHtml] || "";
+        }
+
+        for (const el of document.querySelectorAll("[data-i18n-aria]")) {
+          el.setAttribute("aria-label", dict[el.dataset.i18nAria] || "");
+        }
+
+        for (const el of document.querySelectorAll("[data-i18n-alt]")) {
+          el.setAttribute("alt", dict[el.dataset.i18nAlt] || "");
+        }
+      }
+
+      async function setLanguage(lang) {
+        const nextLang = i18n[lang] ? lang : "zh";
+        localStorage.setItem("announcement-language", nextLang);
+        applyStaticTranslations(nextLang);
+        await loadAnnouncement(nextLang);
+      }
+
+      function initTabs() {
+        const triggers = [...document.querySelectorAll("[data-tab]")];
+        const panels = [...document.querySelectorAll(".tab-content")];
+
+        const activate = (id) => {
+          for (const trigger of triggers) {
+            const selected = trigger.dataset.tab === id;
+            trigger.setAttribute("aria-selected", String(selected));
+          }
+
+          for (const panel of panels) {
+            panel.hidden = panel.id !== `panel-${id}`;
+          }
+        };
+
+        for (const trigger of triggers) {
+          trigger.addEventListener("click", () => activate(trigger.dataset.tab));
+        }
+      }
+
+      function registerServiceWorker() {
+        if (!("serviceWorker" in navigator) || !window.isSecureContext) {
+          return;
+        }
+
+        navigator.serviceWorker.register("./service-worker.js", { scope: "./" }).catch(() => {});
+      }
+
+      initTabs();
+      document.querySelector("[data-lang-toggle]")?.addEventListener("click", () => {
+        const current = localStorage.getItem("announcement-language") === "en" ? "en" : "zh";
+        setLanguage(current === "en" ? "zh" : "en");
+      });
+      setLanguage(localStorage.getItem("announcement-language") === "en" ? "en" : "zh");
+      registerServiceWorker();
+    </script>
+  </body>
+</html>

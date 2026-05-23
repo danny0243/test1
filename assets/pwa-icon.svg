@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">NCUT Library AI Notice icon</title>
+  <desc id="desc">A square NCUT Library app icon using the logo green.</desc>
+  <rect width="512" height="512" rx="96" fill="#007a3d"/>
+  <path d="M120 141c42 27 80 38 136 38s94-11 136-38v230c-42-22-81-31-136-31s-94 9-136 31Z" fill="none" stroke="#fff" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M256 180v159" fill="none" stroke="#fff" stroke-width="28" stroke-linecap="round"/>
+  <circle cx="256" cy="274" r="61" fill="#007a3d" stroke="#fff" stroke-width="26"/>
+  <circle cx="256" cy="274" r="26" fill="#fff"/>
+</svg>
